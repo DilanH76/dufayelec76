@@ -1,0 +1,31 @@
+# =========================================
+# .gitignore - DufayElec76
+# =========================================
+
+# Fichiers sensibles
+.env
+.env.local
+.env.*.local
+
+# Dossiers Composer / dépendances
+/vendor/
+
+# Logs et fichiers temporaires
+*.log
+*.tmp
+/cache/
+
+# Système
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Backups
+*.bak
+*.zip
+*.tar.gz
+
+# Assets en attente (optionnel)
+# /assets/img/hero-bg.jpg
+# /assets/img/icons/*.png

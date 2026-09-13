@@ -1,0 +1,94 @@
+# =========================================
+# .htaccess - DufayElec76
+# Sécurité + Performance + SEO
+# =========================================
+
+# Désactiver l'affichage du contenu des dossiers
+Options -Indexes
+
+# Activer le moteur de réécriture
+RewriteEngine On
+
+# =========================================
+# FORCER HTTPS (important pour la confiance)
+# =========================================
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+# =========================================
+# REDIRECTIONS UTILES
+# =========================================
+
+# Rediriger non-www vers www (canonique)
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
+
+# =========================================
+# COMPRESSION GZIP / Brotli
+# =========================================
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/x-javascript application/json application/xml
+</IfModule>
+
+# =========================================
+# MISE EN CACHE DES RESSOURCES STATIQUES
+# =========================================
+<IfModule mod_expires.c>
+    ExpiresActive On
+
+    # Images
+    ExpiresByType image/jpeg "access plus 6 months"
+    ExpiresByType image/png "access plus 6 months"
+    ExpiresByType image/gif "access plus 6 months"
+    ExpiresByType image/svg+xml "access plus 6 months"
+    ExpiresByType image/webp "access plus 6 months"
+
+    # CSS & JS
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType text/javascript "access plus 1 year"
+
+    # Polices
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+</IfModule>
+
+# =========================================
+# HEADERS DE SÉCURITÉ
+# =========================================
+<IfModule mod_headers.c>
+    # Empêcher l'affichage du site dans une iframe (clickjacking)
+    Header always set X-Frame-Options "SAMEORIGIN"
+
+    # Empêcher les navigateurs de deviner le type de contenu
+    Header always set X-Content-Type-Options "nosniff"
+
+    # Politique de référencement
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # Protection XSS basique
+    Header always set X-XSS-Protection "1; mode=block"
+</IfModule>
+
+# =========================================
+# PROTECTION DES FICHIERS SENSIBLES
+# =========================================
+<FilesMatch "\.(env|log|ini|sh|sql|md|git)">
+    Require all denied
+</FilesMatch>
+
+# Bloquer l'accès direct à certains dossiers
+RedirectMatch 403 ^/vendor/.*$
+
+# Bloquer l'accès direct aux includes (sauf traitement.php, cible du formulaire)
+<IfModule mod_rewrite.c>
+    RewriteCond %{REQUEST_URI} ^/includes/
+    RewriteCond %{REQUEST_URI} !^/includes/traitement\.php$
+    RewriteRule ^ - [F,L]
+</IfModule>
+
+# =========================================
+# PAGE D'ERREUR PERSONNALISÉE (optionnel)
+# =========================================
+ErrorDocument 404 /404.php
+# ErrorDocument 500 /500.php

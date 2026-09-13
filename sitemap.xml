@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <!-- Page d'accueil -->
+    <url>
+        <loc>https://www.dufayelec76.fr/</loc>
+        <lastmod>2026-07-01</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    <!-- Mentions Légales -->
+    <url>
+        <loc>https://www.dufayelec76.fr/mentions-legales.php</loc>
+        <lastmod>2026-07-01</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+
+    <!-- Politique de Confidentialité -->
+    <url>
+        <loc>https://www.dufayelec76.fr/politique-confidentialite.php</loc>
+        <lastmod>2026-07-01</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+
+</urlset>

@@ -1,0 +1,873 @@
+/* =========================================
+   1. VARIABLES GLOBALES (charte graphique)
+   ========================================= */
+:root {
+    /* Les couleurs de DufayElec76 */
+    --bleu-marine: #0c303e; 
+    --vert-eco: #8bc939;
+
+    /* Couleurs de base pour le texte et le fond */
+    --texte-sombre: #2c3e50;
+    --fond-clair: #f8f9fa;
+    --blanc: #ffffff;
+}
+
+/* =========================================
+   2. RESET CSS (marges à zéro)
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    /* Permet un défilement fluide quand on clique sur un lien du menu */
+    scroll-behavior: smooth; 
+}
+
+/* =========================================
+   3. STYLES DE BASE DU CORPS
+   ========================================= */
+body {
+    font-family: 'Poppins', 'Helvetica Neue', Arial, sans-serif; 
+    background-color: var(--fond-clair);
+    color: var(--texte-sombre);
+    line-height: 1.6;
+}
+
+/* Pour que les futures images ne débordent jamais des écrans de téléphone */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* =========================================
+   4. BARRE DE NAVIGATION (HEADER)
+   ========================================= */
+header {
+    position: sticky; 
+    top: 0;
+    background-color: var(--blanc);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+    z-index: 1000; 
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 15px 5%; 
+    max-width: 1200px;
+    margin: 0 auto; 
+}
+
+/* --- Le Logo --- */
+.logo img {
+    height: 60px;
+    width: auto;
+    display: block;
+}
+
+/* --- Les Liens du Menu --- */
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 30px; 
+}
+
+.nav-links a {
+    text-decoration: none; 
+    color: var(--texte-sombre);
+    font-weight: 500;
+    transition: color 0.3s ease; 
+}
+
+.nav-links a:hover {
+    color: var(--vert-eco); 
+}
+
+/* --- Le Bouton "Demander un devis" --- */
+.nav-links .btn-contact {
+    background-color: var(--bleu-marine);
+    color: var(--blanc);
+    padding: 10px 20px;
+    border-radius: 5px; 
+    transition: background-color 0.3s ease;
+}
+
+.nav-links .btn-contact:hover {
+    background-color: var(--vert-eco);
+    color: var(--blanc); 
+}
+
+/* =========================================
+   TÉLÉPHONE DANS LE HEADER
+   ========================================= */
+
+.phone-header:hover {
+    background-color: var(--vert-eco);
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .phone-header {
+        display: none;
+    }
+}
+
+/* =========================================
+   5. MENU MOBILE (RESPONSIVE)
+   ========================================= */
+
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.burger-menu span {
+    width: 25px;
+    height: 3px;
+    background-color: var(--bleu-marine);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* --- RÈGLES POUR LES ÉCRANS MOBILES --- */
+@media (max-width: 768px) {
+    .burger-menu {
+        display: flex;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 70px;
+        left: -100%; 
+        flex-direction: column;
+        background-color: var(--blanc);
+        width: 100%;
+        text-align: center;
+        transition: left 0.3s ease-in-out;
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px 0;
+    }
+
+    .nav-links li {
+        margin: 15px 0;
+    }
+
+    .nav-links.active {
+        left: 0; 
+    }
+}
+
+/* =========================================
+   6. SECTION HERO (ACCUEIL)
+   ========================================= */
+.hero {
+    background: linear-gradient(rgba(12, 48, 62, 0.8), rgba(12, 48, 62, 0.3)), url('../img/hero-bg-2.jpg') center/cover;
+    background-color: var(--bleu-marine); 
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--blanc);
+    padding: 0 20px;
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+/* --- Le gros bouton d'action --- */
+.btn-main {
+    display: inline-block;
+    background-color: var(--vert-eco);
+    color: var(--blanc);
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-main:hover {
+    background-color: #6a9c2a;
+}
+
+/* --- Responsive pour le Hero --- */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+    .hero p {
+        font-size: 1rem;
+    }
+    .hero {
+    background: linear-gradient(rgba(12, 48, 62, 0.8), rgba(12, 48, 62, 0.3)), url('../img/hero-bg-optimized.jpg') center/cover;
+    background-color: var(--bleu-marine); 
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--blanc);
+    padding: 0 20px;
+}
+}
+
+/* =========================================
+   7. SECTION SERVICES
+   ========================================= */
+.services-section {
+    padding: 80px 5%;
+    background-color: var(--fond-clair);
+    text-align: center;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: var(--bleu-marine);
+    margin: 0 auto 60px;
+    position: relative;
+    display: block;
+    width: fit-content;
+    text-align: center;
+}
+
+.section-title::after {
+    content: '';
+    width: 60px;
+    height: 4px;
+    background-color: var(--vert-eco);
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+/* --- La Grille CSS --- */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 30px;
+}
+
+/* --- Le design des cartes --- */
+.service-card {
+    background-color: var(--blanc);
+    padding: 40px 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.service-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 20px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.service-icon img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.service-card h3 {
+    color: var(--bleu-marine);
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+}
+
+.service-card p {
+    font-size: 1rem;
+    color: var(--texte-sombre);
+    text-align: left;
+    line-height: 1.6;
+}
+
+/* --- Responsive pour les Services --- */
+@media (max-width: 992px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    .section-title {
+        font-size: 2rem;
+    }
+}
+
+/* =========================================
+   SECTION RÉALISATIONS - INSTAGRAM
+   ========================================= */
+.realisations-section {
+    padding: 80px 5%;
+    background-color: var(--fond-clair);
+    text-align: center;
+}
+
+.section-subtitle {
+    max-width: 700px;
+    margin: 0 auto 50px auto;
+    font-size: 1.1rem;
+    color: var(--texte-sombre);
+}
+
+.instagram-showcase {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    padding: 50px 40px;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+.instagram-icon {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.instagram-icon img {
+    width: 60px;
+    height: 60px;
+}
+
+.instagram-showcase p {
+    color: var(--texte-sombre);
+    font-size: 1.05rem;
+    margin-bottom: 30px;
+    line-height: 1.7;
+}
+
+.btn-instagram {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    color: white;
+    padding: 14px 32px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.3s;
+}
+
+.instagram-icon-btn {
+    width: 24px;
+    height: 24px;
+}
+
+.btn-instagram:hover {
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .instagram-showcase {
+        padding: 35px 25px;
+    }
+}
+
+/* =========================================
+   8. SECTION CONTACT & FORMULAIRE
+   ========================================= */
+.contact-section {
+    padding: 80px 5%;
+    background-color: var(--blanc);
+    text-align: center;
+}
+
+.contact-subtitle {
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+    color: var(--texte-sombre);
+}
+
+.contact-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact-form {
+    background-color: var(--fond-clair);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    text-align: left;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: var(--bleu-marine);
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+/* Le style commun pour tous les champs de saisie */
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+    max-height: 400px;
+}
+
+/* Effet visuel quand on clique dans un champ */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--vert-eco);
+    box-shadow: 0 0 5px rgba(139, 201, 57, 0.3);
+}
+
+.btn-submit {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* --- Responsive pour le Formulaire --- */
+@media (max-width: 768px) {
+    .contact-form {
+        padding: 20px;
+    }
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}
+
+/* Cache l'input natif */
+input[type="file"] {
+    display: none;
+}
+
+.btn-upload {
+    display: block; /* block au lieu de inline-block */
+    width: 100%; /* prend toute la largeur comme les autres champs */
+    background-color: var(--bleu-marine);
+    color: white !important; /* force le blanc car le label hérite du style .form-group label */
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: center; /* centre le texte */
+    transition: background-color 0.3s ease;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+.btn-upload:hover {
+    background-color: var(--vert-eco);
+}
+
+.upload-info {
+    display: block;
+    margin-top: 8px;
+    font-size: 0.85rem;
+    color: #888;
+    font-style: italic;
+}
+
+/* --- Messages d'alerte du formulaire --- */
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* =========================================
+   9. GESTION DES ERREURS ET ACCESSIBILITÉ
+   ========================================= */
+
+.input-wrapper {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.icon-erreur {
+    display: none; 
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    pointer-events: none;
+}
+
+/* --- DÉCLENCHEMENT DE L'ERREUR --- */
+
+.has-error input {
+    border: 2px solid #e74c3c !important;
+    padding-right: 40px;
+}
+
+.has-error .icon-erreur {
+    display: block;
+}
+
+/* =========================================
+   10. PAGES LÉGALES
+   ========================================= */
+.legal-section {
+    padding: 100px 5% 60px 5%;
+    background-color: var(--fond-clair);
+    min-height: 80vh;
+}
+
+.legal-container {
+    max-width: 900px;
+    background-color: var(--blanc);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.legal-content h2 {
+    color: var(--bleu-marine);
+    margin: 30px 0 15px 0;
+    font-size: 1.3rem;
+}
+
+.legal-content p {
+    margin-bottom: 15px;
+    color: var(--texte-sombre);
+    line-height: 1.7;
+}
+
+/* =========================================
+   11. PIED DE PAGE (FOOTER)
+   ========================================= */
+.main-footer {
+    background-color: var(--bleu-marine);
+    color: var(--blanc);
+    padding: 30px 5%;
+    font-size: 0.9rem;
+    border-top: 3px solid var(--vert-eco);
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-info span {
+    color: var(--vert-eco);
+    font-weight: bold;
+}
+
+.footer-links {
+    display: flex;
+    gap: 25px;
+}
+
+.footer-links a {
+    color: #a0b0b8;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--vert-eco);
+}
+
+/* --- Responsive Footer --- */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .footer-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* =========================================
+   BANDEAU SUPERIEUR
+   ========================================= */
+.top-bar {
+    background-color: var(--bleu-marine);
+    color: white;
+    font-size: 0.9rem;
+    padding: 8px 0;
+}
+
+.top-bar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.top-bar-contact {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.top-contact-link {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.3s;
+}
+
+.top-contact-link:hover {
+    color: var(--vert-eco);
+}
+
+/* Téléphone dans la navbar */
+.phone-header {
+    background-color: var(--vert-eco);
+    color: white;
+    padding: 10px 18px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.phone-header:hover {
+    background-color: #6a9c2a;
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .top-bar p {
+        text-align: center;
+        width: 100%;
+        margin-bottom: 8px;
+    }
+    .phone-header {
+        display: none;
+    }
+}
+
+/* =========================================
+   BOUTON APPEL FLOTTANT (MOBILE)
+   ========================================= */
+.floating-call-btn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--vert-eco);
+    color: white;
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    text-decoration: none;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.floating-call-btn:hover {
+    background: #6a9c2a;
+    transform: scale(1.08);
+    box-shadow: 0 8px 25px rgba(139, 201, 57, 0.5);
+}
+
+.call-icon svg {
+    width: 30px;
+    height: 30px;
+    margin-top: 5px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .floating-call-btn {
+        display: flex;
+    }
+}
+
+@media (min-width: 1024px) {
+    .floating-call-btn {
+        display: none;
+    }
+}
+
+/* =========================================
+   ACCESSIBILITÉ - Focus uniquement au clavier
+   ========================================= */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+.carousel-btn:focus-visible,
+.nav-links a:focus-visible {
+    outline: 3px solid var(--vert-eco);
+    outline-offset: 4px;
+}
+
+.btn-main:focus-visible,
+.phone-header:focus-visible,
+.top-contact-link:focus-visible {
+    outline: 3px solid #ffffff;
+    outline-offset: 4px;
+    background-color: rgba(139, 201, 57, 0.25);
+}
+
+
+/* =========================================
+   SECTION À PROPOS
+   ========================================= */
+.about-section {
+    padding: 80px 5%;
+    background-color: var(--blanc);
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.about-text p {
+    margin-bottom: 18px;
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+.about-text ul {
+    margin: 20px 0;
+    padding-left: 20px;
+}
+
+.about-text li {
+    margin-bottom: 8px;
+}
+
+.placeholder-photo {
+    height: 700px;
+    border-radius: 12px;
+    overflow: hidden; /* coupe ce qui dépasse */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.placeholder-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* remplit sans déformer */
+    object-position: center;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+    
+    .placeholder-photo {
+        height: 300px;
+    }
+}
+
+/* === ICÔNES SVG SERVICES === */
+.service-icon svg {
+    width: 60px;
+    height: 60px;
+    color: var(--bleu-marine);
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.service-card:hover .service-icon svg {
+    color: var(--vert-eco);
+    transform: scale(1.1);
+}

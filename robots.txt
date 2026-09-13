@@ -1,0 +1,9 @@
+# =========================================
+# robots.txt - DufayElec76
+# =========================================
+
+User-agent: *
+Allow: /
+
+# Lien vers le sitemap
+Sitemap: https://www.dufayelec76.fr/sitemap.xml
