@@ -29,3 +29,5 @@ Thumbs.db
 # Assets en attente (optionnel)
 # /assets/img/hero-bg.jpg
 # /assets/img/icons/*.png
+# Configuration locale Claude Code
+.claude/
